@@ -1,0 +1,51 @@
+.TH HSH 1
+.SH NAME
+hsh \- Holberton Shell
+.SH SYNOPSIS
+.B hsh
+[command] [options ...]
+.SH COPYRIGHT
+hsh \- This is a project from the first trimester of Holberton School.
+.SH DESCRIPTION
+.B hsh
+is a shell command interpreter that executes commands read from standard input or a file.
+.B hsh
+is intended to be a clone of the standard command interpreter of
+.B Unix
+and
+.B Unix-like
+systems.
+.SH OPTIONS
+A simple command consists of optional variable assignments followed by space-separated words and redirections, terminated by a control operator. The first word specifies the command to be executed and is passed as argument zero. The remaining words are passed as arguments to the invoked command.
+.PP
+The exit status of a simple command is its return value, or 128+n if the command is terminated by signal n.
+.SS Pipelines
+A pipeline is a sequence of one or more commands separated by the control operators | or |&. The pipeline format is as follows:
+.PP
+[command [..ARGS]] [| - |&] [command2 [..ARGS]]
+.PP
+The standard output of the first command is connected via a pipe to the standard input of the second command. This connection occurs before any redirections specified by the first command (see REDIRECTION below). If
+|& is used, the standard error of the first command, in addition to its standard output, is connected to the standard input of the second command through the pipe. This is shorthand for 2>&1 |. This implicit redirection of the
+standard error to the standard output is performed after any redirections specified by the first command.
+.SS Lists
+A list is a sequence of one or more pipelines separated by one of the operators ;, &, &&, or ||, and optionally terminated by one of ;, &, or a newline character.
+Of these list operators, && and || have equal precedence, followed by ; and &, which have equal precedence.
+A sequence of one or more newline characters may appear in a list instead of a semicolon to delimit commands.
+.PP
+If a command is terminated by the control operator &, the shell executes the command in the background within a subshell. The shell does not wait for the command to finish, and the return status is 0.
+Commands separated by a ; are executed sequentially; the shell waits for each command to terminate in turn. The return status is the exit status of the last command executed.
+AND and OR lists are sequences of one or more pipelines separated by the && and || control operators, respectively. These lists are executed with left associativity. An AND list has the following form:
+.PP
+command1 && command2
+.PP
+command2 is executed if, and only if, command1 returns an exit status of zero.
+.PP
+An OR list has the following form:
+.PP
+command1 || command2
+.PP
+command2 is executed if and only if command1 returns a non-zero exit status. The return status of AND and OR lists is the exit status of the last command executed in the list.
+.SH VERSIONS
+.B hsh
+V1.0.0
+
