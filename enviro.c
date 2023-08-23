@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 char **_copyenv(void);
 void free_env(void);

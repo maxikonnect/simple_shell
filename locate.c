@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 char *fill_path_dir(char *path);
 list_t *get_path_dir(char *path);

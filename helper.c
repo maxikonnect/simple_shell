@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 void free_args(char **args, char **front);
 char *get_pid(void);

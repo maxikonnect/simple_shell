@@ -1,4 +1,4 @@
-#include "shell.h"
+#include "simple_shell.h"
 
 int shellby_env(char **args, char __attribute__((__unused__)) **front);
 int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
