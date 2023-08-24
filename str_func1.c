@@ -1,4 +1,4 @@
-#include "simple_shell.h"
+#include "shell.h"
 
 char *_strchr(char *s, char c);
 int _strspn(char *s, char *accept);
